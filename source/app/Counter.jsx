@@ -1,26 +1,27 @@
 import React from 'react';
-
+import { connect } from 'react-redux'
+import * as CounterActions from '../actions/CounterActions.jsx';
 /**
  * A counter button: tap the button to increase the count.
  */
 class Counter extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-  }
-
   render() {
     return (
       <button
         onClick={() => {
-          this.setState({ count: this.state.count + 1 });
+          this.props.dispatch(CounterActions.incCounter());
         }}
       >
-        Count: {this.state.count}
+        Count: {this.props.counter.value}
       </button>
     );
   }
 }
+
+Counter = connect((state)=>{
+  return {
+    counter: state.counter
+  }
+})(Counter);
+
 export default Counter;

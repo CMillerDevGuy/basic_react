@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './app/Counter.jsx';
 
+import { Provider } from 'react-redux';
+import Store from './store/store.jsx';
+
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
-    React.createElement(Counter),
-    document.getElementById('app')
+
+    <Provider store={Store}>
+      <Counter />
+    </Provider>
+
+
+    ,document.getElementById('app')
   );
 });
